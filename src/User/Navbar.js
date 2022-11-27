@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import Home from "./Home";
 import User from "./User";
-import OptionA from "./OptionA";
-import OptionB from "./OptionB";
+
 
 const Navbar = () => {
     return (

@@ -1,29 +1,25 @@
-import Navbar from "./Navbar";
-import { BrowserRouter, Routes, Route, Link, Router } from 'react-router-dom'
-import Home from "./Home";
-import OptionA from "./OptionA";
-import OptionB from "./OptionB";
-import Login from "./Login";
-import Register from "./Register";
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import AdminApp from "./Admin/AdminApp"
+import UserApp from "./User/UserApp"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
-        <Navbar />
-
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/optionA" element={<OptionA />} />
-          <Route path="/optionB" element={<OptionB />} />
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/*" element={<UserApp />} />
+          <Route path="/admin/*" element={<AdminApp />} />
         </Routes>
+        <ToastContainer />
       </BrowserRouter>
     </div>
   );
 }
 
 export default App;
+
+/* 
+App is an container component to switch between user and admin
+*/

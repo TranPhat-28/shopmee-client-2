@@ -9,17 +9,7 @@ body{
   font-family: 'Titan One', cursive;
 }
 
-.user-app{
+.App{
   background-image: linear-gradient(whitesmoke, rgb(199, 199, 255));
   height: 100vh;
-}
-
-#switch{
-  text-decoration: none;
-}
-
-#switch:hover{
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: none;
 }
