@@ -1,9 +1,11 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import AuthedUserSetting from './AuthedUserSetting';
 
 const User = () => {
-
-    const user = null;
-
+    const { user } = useContext(AuthContext);
+    console.log(user);
 
     // Will render User if user logged in
     return(
@@ -16,9 +18,15 @@ const User = () => {
                 <Link className="nav-link" aria-current="page" to='/register' >Register</Link>
             </li>}
 
-            {user && <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to='/login' >{user}</Link>
-            </li>}
+            {user && 
+                <li className="nav-item">
+                    <a className="nav-link" aria-current="page" href="#">
+                        Cart
+                        <i className="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+            }
+            {user && <AuthedUserSetting />}
         </ul>
     );
 }

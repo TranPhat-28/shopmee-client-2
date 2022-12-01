@@ -1,51 +1,26 @@
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { Link } from "react-router-dom";
+import { useLogin } from "../hooks/useLogin";
 
 const Login = () => {
 
-    const navigate = useNavigate();
+    const {login} = useLogin();
 
-    const handleSubmit = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
         const email = document.getElementsByName("email")[0].value;
         const password = document.getElementsByName("password")[0].value;
-        
-        fetch('/login', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            })
-        })
-        .then(res => { 
-            return res.json()
-        })
-        .then(data => {
-            /*
-            if (data === "OK") {
-                toast.success("Registration success!");
-                setTimeout(() => {
-                    navigate('/login');
-                }, 1500)
-            }
-            else{
-                toast.error(data);
-            }
-            */
-        })
-        .catch(e => { 
-            //console.log(e.message);
-            toast.error(e.message);
-        })
-    }
 
+        await login(email, password);
+
+        document.getElementsByName("email")[0].value = '';
+        document.getElementsByName("password")[0].value = '';
+    }
 
     return(
         <div className="container d-flex justify-content-center">
             <div className="jumbotron p-3">
-                <form onSubmit={handleSubmit} className="d-flex flex-column">
+                <form className="d-flex flex-column" onSubmit={handleLogin}>
                     <h2 className="mb-4">Login into your account</h2>
 
                     <label htmlFor="email" className="form-label m-1">Email</label>
