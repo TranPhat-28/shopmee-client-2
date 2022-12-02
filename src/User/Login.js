@@ -3,7 +3,7 @@ import { useLogin } from "../hooks/useLogin";
 
 const Login = () => {
 
-    const {login} = useLogin();
+    const { login } = useLogin();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -17,8 +17,8 @@ const Login = () => {
         document.getElementsByName("password")[0].value = '';
     }
 
-    return(
-        <div className="container d-flex justify-content-center">
+    return (
+        <div className="container d-flex justify-content-center form-container">
             <div className="jumbotron p-3">
                 <form className="d-flex flex-column" onSubmit={handleLogin}>
                     <h2 className="mb-4">Login into your account</h2>

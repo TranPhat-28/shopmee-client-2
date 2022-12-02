@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../context/AuthContext';
@@ -25,7 +25,10 @@ export const useLogin = () => {
             if (data.email){
                 //console.log(data.email);
                 toast.success("Login success");
-                setUser(data.email);
+                // Set AuthContext data
+                setUser(data);
+                // Set LocalStorage
+                localStorage.setItem('user', JSON.stringify(data))
                 setTimeout(() => {
                     navigate('/')
                 }, 1000);

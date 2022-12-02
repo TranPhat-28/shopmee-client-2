@@ -23,3 +23,7 @@ body{
   font-weight: bold;
   text-decoration: none;
 }
+
+.dropdown-item:hover{
+  cursor: pointer;
+}

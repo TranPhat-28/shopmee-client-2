@@ -5,7 +5,6 @@ import AuthedUserSetting from './AuthedUserSetting';
 
 const User = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
 
     // Will render User if user logged in
     return(
