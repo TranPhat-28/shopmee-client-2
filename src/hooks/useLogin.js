@@ -29,9 +29,7 @@ export const useLogin = () => {
                 setUser(data);
                 // Set LocalStorage
                 localStorage.setItem('user', JSON.stringify(data))
-                setTimeout(() => {
-                    navigate('/')
-                }, 1000);
+                navigate('/');
             }
             else{
                 toast.error(data);

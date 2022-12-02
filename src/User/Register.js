@@ -33,9 +33,7 @@ const Register = () => {
             //console.log(data);
             if (data === "OK") {
                 toast.success("Registration success!");
-                setTimeout(() => {
-                    navigate('/login');
-                }, 1500)
+                navigate('/login');
             }
             else{
                 toast.error(data);
