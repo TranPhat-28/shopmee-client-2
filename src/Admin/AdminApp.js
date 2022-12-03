@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import AddProduct from "./AddProduct";
+import AdminLogin from "./AdminLogin";
 import NavbarAdmin from "./NavbarAdmin";
 
 const AdminApp = () => {
@@ -8,7 +8,8 @@ const AdminApp = () => {
             <NavbarAdmin />
 
             <Routes>
-                <Route path="/" element={<div>Login to Admin Panel</div>} />
+                <Route path="/" element={<AdminLogin />} />
+                <Route path="/addProduct" element={<div>Add a new Product</div>} />
             </Routes>            
         </div>
     )

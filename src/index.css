@@ -11,7 +11,7 @@ body{
 
 .user-app{
   background-image: linear-gradient(whitesmoke, rgb(199, 199, 255));
-  height: 100vh;
+  min-height: 100vh;
 }
 
 #switch{
@@ -26,4 +26,91 @@ body{
 
 .dropdown-item:hover{
   cursor: pointer;
+}
+
+.responsive-text{
+  font-size: 2.5vw;
+}
+
+.category-item{
+  border: solid 1px black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: .3s;
+  opacity: 0.5;
+  width: 20%;
+}
+
+.category-item:hover{
+  opacity: 1;
+}
+
+#title{
+  opacity: 0.5;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover{
+  color: inherit;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  border-radius: 6px;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.overlay:hover{
+  opacity: 0.8;
+}
+
+.card-container{
+  cursor: pointer;
+}
+
+.overlay-text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card{
+  width: 12rem;
+  border: none;
+}
+
+.horizontal-list{
+  overflow-x: scroll;
+}
+
+@media only screen and (min-width: 768px) {
+  .responsive-icon{
+      font-size: 2rem;
+  }
+
+  .responsive-text{
+    font-size: 1rem;
+  }
+
+  .card{
+    width: 15rem;
+  }
 }
