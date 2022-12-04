@@ -17,8 +17,7 @@ const AddtoCart = (props) => {
                 <label forhtml="quantity" className="me-2">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" className="form-control w-25 d-inline" defaultValue="1" />
                 <div className="container mt-3">
-                    <button class="btn btn-primary" onclick="addToCartAndBuy()">Buy now</button>
-                    <button class="btn btn-secondary ms-3" onclick="addToCart()">Add to cart</button>
+                    <button className="btn btn-primary">Add to cart</button>
                 </div>
             </div>
         )}
