@@ -1,11 +1,17 @@
 import { NumericFormat } from "react-number-format";
+import { useNavigate } from "react-router-dom";
 
 const Card = (props) => {
 
     const product = props.product;
+    const navigate = useNavigate();
+
+    const viewDetail = (id) => {
+        navigate('/product/' + id);
+    }
 
     return (
-        <div className="card-container m-2">
+        <div className="card-container m-2" onClick={() => { viewDetail(product._id) }}>
             <div className="card p-2 shadow">
                 <img className="card-img-top" alt="ProductIMG" src={product.productImage}/>
                 <div className="card-body">

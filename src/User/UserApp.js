@@ -5,6 +5,7 @@ import Login from "./Login";
 import Navbar from "./Navbar";
 import OptionA from "./OptionA";
 import OptionB from "./OptionB";
+import ProductDetail from "./ProductDetail/ProductDetail";
 import Register from "./Register";
 
 
@@ -19,6 +20,7 @@ const UserApp = () => {
                 <Route path="/optionB" element={<OptionB />} />
 
                 <Route path="/category/:category" element={<CategoryView />} />
+                <Route path="/product/:id" element={<ProductDetail />} />
 
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
@@ -28,3 +30,12 @@ const UserApp = () => {
 }
 
 export default UserApp;
+
+/* 
+DESCRIPTION FOR ALL THE PATHS:
+    - /                     : Homepage - showing all categories, new arrivals, best sellers, and voucher
+    - /optionA              : Testing
+    - /optionB              : Testing
+    - /category/:category   : When user clicks on a category from homepage, will proceed to show all products of that category
+    - /product/:id          : Show detail information of the product
+*/

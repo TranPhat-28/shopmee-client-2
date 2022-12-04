@@ -3,13 +3,12 @@ import Card from "./Card"
 const ProductListing = (props) => {
 
     const itemList = props.productList;
-    
 
     return(
         <div className="horizontal-list">
             <div className="container d-flex flex-row pb-4">
                 {itemList.map(item => (
-                    <Card product={item} key={item._id}/>
+                    <Card product={item} key={item._id} />
                 ))}
             </div>
         </div>
