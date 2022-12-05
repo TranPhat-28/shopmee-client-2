@@ -1,6 +1,6 @@
 import { NumericFormat } from "react-number-format";
 import { useParams } from "react-router-dom";
-import { useFetchProducts } from "../../hooks/useFetchProducts";
+import { useFetchProducts } from "../../../hooks/useFetchProducts";
 import AddtoCart from "./AddtoCart";
 
 const ProductDetail = () => {

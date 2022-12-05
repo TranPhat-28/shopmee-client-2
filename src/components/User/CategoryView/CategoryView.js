@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useFetchProducts } from "../hooks/useFetchProducts";
-import Card from "./Card";
+import { useFetchProducts } from "../../../hooks/useFetchProducts";
+import Card from "../Card";
 
 const CategoryView = () => {
 

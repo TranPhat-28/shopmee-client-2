@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
-import { useLogout } from "../hooks/useLogout";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { useLogout } from "../../../hooks/useLogout";
 
 const AuthedUserSetting = () => {
 

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import AdminApp from "./Admin/AdminApp"
-import UserApp from "./User/UserApp"
+import AdminApp from "./components/Admin/AdminApp"
+import UserApp from "./components/User/UserApp"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

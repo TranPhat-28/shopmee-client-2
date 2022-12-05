@@ -1,7 +1,7 @@
-import { useFetchProducts } from "../hooks/useFetchProducts";
-import Carousel from "./Home/Carousel";
-import Category from "./Home/Category";
-import ProductListing from "./ProductListing";
+import { useFetchProducts } from "../../../hooks/useFetchProducts";
+import Carousel from "./Carousel";
+import Category from "./Category";
+import ProductListing from "../ProductListing";
 
 const Home = () => {
     const { isPending: isPendingA, data: newArrivals } = useFetchProducts('/newArrivals');

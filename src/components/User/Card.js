@@ -12,7 +12,7 @@ const Card = (props) => {
 
     return (
         <div className="card-container m-2" onClick={() => { viewDetail(product._id) }}>
-            <div className="card p-2 shadow">
+            <div className="card p-2 h-100 shadow">
                 <img className="card-img-top" alt="ProductIMG" src={product.productImage}/>
                 <div className="card-body">
                     <h4 className="card-title">

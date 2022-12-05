@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import CategoryView from "./CategoryView";
-import Home from "./Home";
+import CategoryView from "./CategoryView/CategoryView";
+import Home from "./Home/Home";
 import Login from "./Login";
-import Navbar from "./Navbar";
-import OptionA from "./OptionA";
-import OptionB from "./OptionB";
+import Navbar from "./Navbar/Navbar";
+import OptionA from "./Navbar/OptionA";
+import OptionB from "./Navbar/OptionB";
 import ProductDetail from "./ProductDetail/ProductDetail";
 import Register from "./Register";
 

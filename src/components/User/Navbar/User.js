@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../../contexts/AuthContext';
 import AuthedUserSetting from './AuthedUserSetting';
 
 const User = () => {
@@ -19,7 +19,7 @@ const User = () => {
 
             {user && 
                 <li className="nav-item">
-                    <a className="nav-link" aria-current="page" href="#">
+                    <a className="nav-link" aria-current="page" href="/cart">
                         Cart
                         <i className="fas fa-shopping-cart"></i>
                     </a>
