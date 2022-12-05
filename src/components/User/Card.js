@@ -5,6 +5,8 @@ const Card = (props) => {
 
     const product = props.product;
     const navigate = useNavigate();
+    // On search page and category page we must display smaller cards
+    const styling = props.styling;
 
     const viewDetail = (id) => {
         navigate('/product/' + id);
@@ -12,9 +14,9 @@ const Card = (props) => {
 
     return (
         <div className="card-container m-2" onClick={() => { viewDetail(product._id) }}>
-            <div className="card p-2 h-100 shadow">
+            <div className={ styling ? "card p-2 h-100 shadow smaller-card" : "card p-2 h-100 shadow"}>
                 <img className="card-img-top" alt="ProductIMG" src={product.productImage}/>
-                <div className="card-body">
+                <div className={ styling ? "card-body p-1" : "card-body"}>
                     <h4 className="card-title">
                         <NumericFormat displayType="text" value={product.price} thousandsGroupStyle="thousand" thousandSeparator="," /> VND
                     </h4>

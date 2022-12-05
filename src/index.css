@@ -97,6 +97,11 @@ a:hover{
   border: none;
 }
 
+.smaller-card{
+  width: 9rem;
+  border: none;
+}
+
 .horizontal-list{
   overflow-x: scroll;
 }
@@ -122,5 +127,10 @@ a:hover{
 
   .card{
     width: 15rem;
+  }
+  
+  .smaller-card{
+    width: 15rem;
+    border: none;
   }
 }

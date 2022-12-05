@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useLogout } from "../../../hooks/useLogout";
 
@@ -12,6 +13,7 @@ const AuthedUserSetting = () => {
     const handleLogout = () => {
         logout();
         navigate('/');
+        toast.success('Logout success');
     }
 
     return (
