@@ -2,6 +2,9 @@ import { useFetchProducts } from "../../../hooks/useFetchProducts";
 import Carousel from "./Carousel";
 import Category from "./Category";
 import ProductListing from "../ProductListing";
+import VoucherBanner from "./VoucherBanner";
+import FooterInfo from "./FooterInfo";
+
 
 const Home = () => {
     const { isPending: isPendingA, data: newArrivals } = useFetchProducts('/newArrivals');
@@ -19,6 +22,8 @@ const Home = () => {
             <h3 className="text-center mt-3" id="title">Best sellers</h3>
             { isPendingB && <div>Loading...</div>}
             { bestSellers && <ProductListing productList={bestSellers} />}
+
+            <VoucherBanner />
         </div>
     );
 }

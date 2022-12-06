@@ -73,7 +73,7 @@ a:hover{
 }
 
 .overlay:hover{
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .card-container{
@@ -116,6 +116,30 @@ a:hover{
   border-radius: 50%;
 }
 
+.voucher{
+  position: relative;
+  cursor: pointer;
+}
+
+/* Customize scrollbar*/
+::-webkit-scrollbar-track
+{
+	border-radius: 6px;
+}
+
+::-webkit-scrollbar
+{
+	width: 10px;
+  height: 8px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 6px;
+	background-color: grey;
+}
+
 @media only screen and (min-width: 768px) {
   .responsive-icon{
       font-size: 2rem;
@@ -132,5 +156,9 @@ a:hover{
   .smaller-card{
     width: 15rem;
     border: none;
+  }
+
+  .voucher{
+    width: 80%;
   }
 }

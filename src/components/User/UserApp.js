@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import CategoryView from "./CategoryView/CategoryView";
+import FooterInfo from "./Home/FooterInfo";
 import Home from "./Home/Home";
 import Login from "./Login";
 import Navbar from "./Navbar/Navbar";
@@ -21,10 +22,15 @@ const UserApp = () => {
 
                 <Route path="/category/:category" element={<CategoryView />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
+                <Route path="/vouchers" element={<div>Get your voucher here</div>} />
 
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-            </Routes>            
+            </Routes>
+
+            <Routes>
+                <Route path="/" element={<FooterInfo />} />
+            </Routes>
         </div>
     );
 }
@@ -38,4 +44,5 @@ DESCRIPTION FOR ALL THE PATHS:
     - /optionB              : Testing
     - /category/:category   : When user clicks on a category from homepage, will proceed to show all products of that category
     - /product/:id          : Show detail information of the product
+    - /vouchers             : Show all vouchers
 */
