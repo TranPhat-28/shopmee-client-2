@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
 import User from "./User";
 
 
@@ -20,6 +21,8 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" aria-current="page" to='/OptionB' >Option B</Link>
                             </li>
+
+                            <SearchBar />
                         </ul>
 
                         <User />

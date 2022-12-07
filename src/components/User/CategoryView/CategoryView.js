@@ -16,17 +16,6 @@ const CategoryView = () => {
                     { data && data.map(item => (
                         <Card product={item} key={item._id} styling='smaller-card' />
                     ))}
-                    { data && data.map(item => (
-                        <Card product={item} key={item._id} styling='smaller-card' />
-                    ))}
-                    { data && data.map(item => (
-                        <Card product={item} key={item._id} styling='smaller-card' />
-                    ))}
-                    { data && data.map(item => (
-                        <Card product={item} key={item._id} styling='smaller-card' />
-                    ))}
-                    
-                    
 
                     { (data && data.length === 0) && (<div className="d-flex w-100 flex-column align-items-center">
                         <img id="notFound" className="img-fluid" src="/search.png" alt="Not Found"></img>

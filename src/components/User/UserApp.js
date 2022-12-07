@@ -8,6 +8,7 @@ import OptionA from "./Navbar/OptionA";
 import OptionB from "./Navbar/OptionB";
 import ProductDetail from "./ProductDetail/ProductDetail";
 import Register from "./Register";
+import Search from "./Search/Search";
 
 
 const UserApp = () => {
@@ -23,6 +24,8 @@ const UserApp = () => {
                 <Route path="/category/:category" element={<CategoryView />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
                 <Route path="/vouchers" element={<div>Get your voucher here</div>} />
+
+                <Route path="/search" element={<Search />} />
 
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
