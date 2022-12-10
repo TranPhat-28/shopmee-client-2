@@ -19,10 +19,10 @@ const User = () => {
 
             {user && 
                 <li className="nav-item">
-                    <a className="nav-link" aria-current="page" href="/cart">
+                    <Link className="nav-link" aria-current="page" to="/cart">
                         Cart
                         <i className="fas fa-shopping-cart"></i>
-                    </a>
+                    </Link>
                 </li>
             }
             {user && <AuthedUserSetting />}

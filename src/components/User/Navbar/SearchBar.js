@@ -16,7 +16,7 @@ const SearchBar = () => {
     }
 
     return (
-        <form className="d-flex" role="search" onSubmit={handleSearch}>
+        <form className="d-flex ms-5" role="search" onSubmit={handleSearch}>
             <input className="form-control me-2" name="product-name" type="search" placeholder="Search for a product..." aria-label="Search" id="search"/>
             <button className="btn btn-outline-primary">Search</button>
         </form>
