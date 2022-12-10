@@ -92,6 +92,29 @@ a:hover{
   text-align: center;
 }
 
+#empty{
+  max-height: 300px;
+}
+
+#cartContainer{
+  overflow-y: scroll;
+  max-height: 400px;
+}
+
+#product-image{
+  width: 80px;
+  height: 80px;
+}
+
+.cart-item{
+  cursor: pointer;
+  transition-duration: .2s;
+}
+
+.cart-item:hover{
+  background-color: rgb(230, 230, 230);
+}
+
 .card{
   width: 12rem;
   border: none;

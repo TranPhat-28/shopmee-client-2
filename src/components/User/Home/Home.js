@@ -3,7 +3,6 @@ import Carousel from "./Carousel";
 import Category from "./Category";
 import ProductListing from "../ProductListing";
 import VoucherBanner from "./VoucherBanner";
-import FooterInfo from "./FooterInfo";
 
 
 const Home = () => {
