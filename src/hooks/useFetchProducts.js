@@ -46,6 +46,7 @@ export const useFetchWithAuth = (url, method, token, body) => {
         fetchOption.body = JSON.stringify(body);
     }
 
+    
     useEffect(() => {
         fetch(url, fetchOption)
         .then(res => {

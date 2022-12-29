@@ -11,10 +11,38 @@ const Cart = () => {
     const { user } = useContext(AuthContext);
     const { data, isPending, error } = useFetchWithAuth('/cart', 'POST', user.token, { email: user.email });
 
+
     if (error) {
         navigate('/');
         toast.error(error);
     }
+
+    const removeItem = (id) => {
+        if (window.confirm('Do you really want to remove this item?')) {
+            fetch('/cart/' + id, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `bearer ${user.token}`
+                }
+            })
+            .then(res => {
+                if (!res.ok) { throw res }
+                return res.json()
+            })
+            .then(data => {
+                // Refresh
+                navigate(0);
+                toast.success('Item removed from your cart');
+            })
+            .catch(e => {
+                e.json().then(err => {
+                    toast.error(err.error);
+                })
+            })
+        }
+    }
+
 
     return (
         <div className="container h-100 pt-4 pb-4" style={{ backgroundColor: "white" }}>
@@ -33,7 +61,7 @@ const Cart = () => {
                 <div className="container p-0" id="cartContainer">
                     <ul className="list-group w-100">
                         {data.detailedList.map(item => (
-                            <li className="list-group-item cart-item" key={item._id}>
+                            <li className="list-group-item cart-item" key={item.idInCart} onClick={() => {removeItem(item.idInCart)}}>
                                 <div className="row">
                                     <div className="container col-4 col-lg-6 d-flex align-items-center">
                                         <img id="product-image" className="img-fluid" alt="Product" src={item.image} />
