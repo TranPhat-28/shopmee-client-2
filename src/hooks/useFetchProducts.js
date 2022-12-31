@@ -65,5 +65,5 @@ export const useFetchWithAuth = (url, method, token, body) => {
         })
     }, [url, method, token])
 
-    return { data, isPending, error };
+    return { data, isPending, error, setData };
 }

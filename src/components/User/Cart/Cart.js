@@ -9,8 +9,9 @@ const Cart = () => {
 
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
-    const { data, isPending, error } = useFetchWithAuth('/cart', 'POST', user.token, { email: user.email });
+    const { data, isPending, error, setData } = useFetchWithAuth('/cart', 'POST', user.token, { email: user.email });
 
+    
 
     if (error) {
         navigate('/');
@@ -31,8 +32,8 @@ const Cart = () => {
                 return res.json()
             })
             .then(data => {
-                // Refresh
-                navigate(0);
+                // Re-render the itemlist
+                setData(data);
                 toast.success('Item removed from your cart');
             })
             .catch(e => {
