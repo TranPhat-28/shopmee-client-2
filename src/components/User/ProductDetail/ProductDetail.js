@@ -1,11 +1,11 @@
 import { NumericFormat } from "react-number-format";
 import { useParams } from "react-router-dom";
-import { useFetchProducts } from "../../../hooks/useFetchProducts";
+import { useCustomFetch } from "../../../hooks/useFetch";
 import AddtoCart from "./AddtoCart";
 
 const ProductDetail = () => {
     const { id } = useParams();
-    const { data, isPending } = useFetchProducts('/product/' + id);
+    const { data, isPending } = useCustomFetch('/product/' + id);
 
     return (
         <div className="container h-100 pt-4 pb-4" style={{ backgroundColor: "white" }}>

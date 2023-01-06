@@ -1,4 +1,4 @@
-import { useFetchProducts } from "../../../hooks/useFetchProducts";
+import { useCustomFetch } from "../../../hooks/useFetch";
 import Carousel from "./Carousel";
 import Category from "./Category";
 import ProductListing from "../ProductListing";
@@ -6,8 +6,8 @@ import VoucherBanner from "./VoucherBanner";
 
 
 const Home = () => {
-    const { isPending: isPendingA, data: newArrivals } = useFetchProducts('/newArrivals');
-    const { isPending: isPendingB, data: bestSellers } = useFetchProducts('/bestSellers');
+    const { isPending: isPendingA, data: newArrivals } = useCustomFetch('/newArrivals');
+    const { isPending: isPendingB, data: bestSellers } = useCustomFetch('/bestSellers');
 
     return(
         <div className="container" style={{backgroundColor: "white"}}>

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useLogout } from "../../../hooks/useLogout";
@@ -29,16 +29,16 @@ const AuthedUserSetting = () => {
 
                 <li><hr className="dropdown-divider"></hr></li>
 
-                <li><a className="dropdown-item" href="/myOrders">My orders (NOT YET)</a></li>
+                <li><Link className="dropdown-item" to="/myOrders">My orders (NOT YET)</Link></li>
 
                 <li><hr className="dropdown-divider"></hr></li>
 
-                <li><a className="dropdown-item" href="/changeInfo">Change information (NOT YET)</a></li>
-                <li><a className="dropdown-item" href="/changePassword">Change password (NOT YET)</a></li>
+                <li><Link className="dropdown-item" to="/changeInfo">Change information</Link></li>
+                <li><Link className="dropdown-item" to="/changePassword">Change password (NOT YET)</Link></li>
 
                 <li><hr className="dropdown-divider"></hr></li>
 
-                <li><a className="dropdown-item" href="/report">Report to admin (NOT YET)</a></li>
+                <li><Link className="dropdown-item" to="/report">Report to admin (NOT YET)</Link></li>
 
                 <li><hr className="dropdown-divider"></hr></li>
 

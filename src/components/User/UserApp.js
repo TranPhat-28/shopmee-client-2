@@ -10,6 +10,9 @@ import ProductDetail from "./ProductDetail/ProductDetail";
 import Register from "./Register";
 import Search from "./Search/Search";
 import Cart from "./Cart/Cart";
+import ConfirmOrder from "./ConfirmOrder/ConfirmOrder";
+import VoucherList from "./VoucherPage/VoucherList";
+import UserInfo from "./ChangeInfo/UserInfo";
 
 
 const UserApp = () => {
@@ -25,7 +28,7 @@ const UserApp = () => {
 
                 <Route path="/category/:category" element={<CategoryView />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
-                <Route path="/vouchers" element={<div>Get your voucher here</div>} />
+                <Route path="/vouchers" element={<VoucherList />} />
 
                 <Route path="/search" element={<Search />} />
 
@@ -33,6 +36,9 @@ const UserApp = () => {
                 <Route path="/register" element={ user ? <Navigate to='/' /> : <Register />} />
 
                 <Route path="/cart" element={ user ? <Cart /> : <Navigate to='/login' />} />
+                <Route path="/confirm" element={ user ? <ConfirmOrder /> : <Navigate to='/login' />} />
+
+                <Route path="/changeInfo" element={ user ? <UserInfo /> : <Navigate to='/login' />} />
             </Routes>
 
             <Routes>
@@ -54,4 +60,7 @@ DESCRIPTION FOR ALL THE PATHS:
     - /vouchers             : Show all vouchers
 
     - /cart                 : View cart
+    - /confirm              : Confirm order placement
+
+    - /changeInfo          : Change user's contact information
 */

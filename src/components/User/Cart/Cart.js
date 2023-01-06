@@ -3,7 +3,7 @@ import { NumericFormat } from "react-number-format";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { useFetchWithAuth } from "../../../hooks/useFetchProducts";
+import { useFetchWithAuth } from "../../../hooks/useFetch";
 
 const Cart = () => {
 
@@ -88,6 +88,8 @@ const Cart = () => {
                 <h2 className="fw-bold">Total: 
                     <NumericFormat displayType="text" value={data.total} thousandsGroupStyle="thousand" thousandSeparator="," /> VND
                 </h2>
+
+                <Link className="btn btn-primary" to='/confirm'>Continue</Link>
             </div>}
 
             {isPending && <div>Loading...</div>}

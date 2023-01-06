@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useFetchProducts } from "../../../hooks/useFetchProducts";
+import { useCustomFetch } from "../../../hooks/useFetch";
 import Card from "../Card";
 
 const CategoryView = () => {
 
     const { category } = useParams()
-    const { data, isLoading } = useFetchProducts('/category/' + category);
+    const { data, isLoading } = useCustomFetch('/category/' + category);
 
     return (
             <div className="container pb-5" style={{backgroundColor: "white"}}>

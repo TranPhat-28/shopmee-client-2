@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useFetchProducts = (url) => {
+export const useCustomFetch = (url) => {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(true);
     //const [error, setError] = useState(null);
