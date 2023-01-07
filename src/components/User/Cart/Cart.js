@@ -65,7 +65,7 @@ const Cart = () => {
                             <li className="list-group-item cart-item" key={item.idInCart} onClick={() => {removeItem(item.idInCart)}}>
                                 <div className="row">
                                     <div className="container col-4 col-lg-6 d-flex align-items-center">
-                                        <img id="product-image" className="img-fluid" alt="Product" src={item.image} />
+                                        <img id="cart-product-image" className="img-fluid" alt="Product" src={item.image} />
                                     </div>
                                     <div className="container col-8 col-lg-3 d-flex flex-column">
                                         <h5 className="m-1">{item.name}</h5>
