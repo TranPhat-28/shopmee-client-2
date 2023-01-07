@@ -12,7 +12,8 @@ import Search from "./Search/Search";
 import Cart from "./Cart/Cart";
 import ConfirmOrder from "./ConfirmOrder/ConfirmOrder";
 import VoucherList from "./VoucherPage/VoucherList";
-import UserInfo from "./ChangeInfo/UserInfo";
+import UserInfo from "./ChangeInfo/ChangeUserInfo";
+import ChangePassword from "./ChangeInfo/ChangeUserPassword";
 
 
 const UserApp = () => {
@@ -39,6 +40,7 @@ const UserApp = () => {
                 <Route path="/confirm" element={ user ? <ConfirmOrder /> : <Navigate to='/login' />} />
 
                 <Route path="/changeInfo" element={ user ? <UserInfo /> : <Navigate to='/login' />} />
+                <Route path="/changePassword" element={ user ? <ChangePassword /> : <Navigate to='/login' />} />
             </Routes>
 
             <Routes>
@@ -62,5 +64,6 @@ DESCRIPTION FOR ALL THE PATHS:
     - /cart                 : View cart
     - /confirm              : Confirm order placement
 
-    - /changeInfo          : Change user's contact information
+    - /changeInfo           : Change user's contact information
+    - /changePassword       : Change user's password
 */

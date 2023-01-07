@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthContext";
@@ -8,7 +8,6 @@ const UserInfo = () => {
 
     const { user } = useContext(AuthContext);
     const { data, isPending, error } = useFetchWithAuth('/user/' + user, 'GET', user.token)
-    const navigate = useNavigate();
 
     const HandleUpdate = (e) => {
         e.preventDefault();
