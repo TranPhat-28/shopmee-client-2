@@ -10,7 +10,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/*" element={<UserApp />} />
-          <Route path="/admin/*" element={<AdminApp />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>
@@ -22,4 +21,14 @@ export default App;
 
 /* 
 App is an container component to switch between user and admin
+*/
+
+/*
+<BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<UserApp />} />
+          <Route path="/admin/*" element={<AdminApp />} />
+        </Routes>
+        <ToastContainer />
+      </BrowserRouter>
 */
