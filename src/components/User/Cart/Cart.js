@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useFetchWithAuth } from "../../../hooks/useFetch";
+import VoucherCheck from "./VoucherCheck";
 
 const Cart = () => {
 
@@ -85,11 +86,13 @@ const Cart = () => {
             }
 
             {data && <div className="text-end pt-4">
+                <VoucherCheck />
+
                 <h2 className="fw-bold">Total: 
                     <NumericFormat displayType="text" value={data.total} thousandsGroupStyle="thousand" thousandSeparator="," /> VND
                 </h2>
 
-                <Link className="btn btn-primary" to='/confirm'>Continue</Link>
+                <Link className="btn btn-primary" to='/confirm'>Checkout</Link>
             </div>}
 
             {isPending && <div>Loading...</div>}
