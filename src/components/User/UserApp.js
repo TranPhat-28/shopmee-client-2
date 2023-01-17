@@ -10,10 +10,10 @@ import ProductDetail from "./ProductDetail/ProductDetail";
 import Register from "./Register";
 import Search from "./Search/Search";
 import Cart from "./Cart/Cart";
-import ConfirmOrder from "./ConfirmOrder/ConfirmOrder";
 import VoucherList from "./VoucherPage/VoucherList";
 import UserInfo from "./ChangeInfo/ChangeUserInfo";
 import ChangePassword from "./ChangeInfo/ChangeUserPassword";
+import ConfirmOrder from "./Confirm/ConfirmOrder";
 
 
 const UserApp = () => {
@@ -41,6 +41,8 @@ const UserApp = () => {
 
                 <Route path="/changeInfo" element={ user ? <UserInfo /> : <Navigate to='/login' />} />
                 <Route path="/changePassword" element={ user ? <ChangePassword /> : <Navigate to='/login' />} />
+
+                <Route path='*' element={<div>Not found</div>} />
             </Routes>
 
             <Routes>
@@ -62,7 +64,7 @@ DESCRIPTION FOR ALL THE PATHS:
     - /vouchers             : Show all vouchers
 
     - /cart                 : View cart
-    - /confirm              : Confirm order placement
+    - /confirm              : Confirm the order
 
     - /changeInfo           : Change user's contact information
     - /changePassword       : Change user's password

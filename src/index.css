@@ -58,6 +58,10 @@ a:hover{
   color: inherit;
 }
 
+p{
+  margin: 0;
+}
+
 .overlay {
   position: absolute;
   top: 0;

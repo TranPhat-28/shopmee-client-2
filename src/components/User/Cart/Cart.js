@@ -12,7 +12,7 @@ const Cart = () => {
     const { user } = useContext(AuthContext);
     const { data, isPending, error, setData } = useFetchWithAuth('/cart', 'POST', user.token, { email: user.email });
 
-    
+
 
     if (error) {
         navigate('/');
@@ -28,20 +28,20 @@ const Cart = () => {
                     'Authorization': `bearer ${user.token}`
                 }
             })
-            .then(res => {
-                if (!res.ok) { throw res }
-                return res.json()
-            })
-            .then(data => {
-                // Re-render the itemlist
-                setData(data);
-                toast.success('Item removed from your cart');
-            })
-            .catch(e => {
-                e.json().then(err => {
-                    toast.error(err.error);
+                .then(res => {
+                    if (!res.ok) { throw res }
+                    return res.json()
                 })
-            })
+                .then(data => {
+                    // Re-render the itemlist
+                    setData(data);
+                    toast.success('Item removed from your cart');
+                })
+                .catch(e => {
+                    e.json().then(err => {
+                        toast.error(err.error);
+                    })
+                })
         }
     }
 
@@ -70,7 +70,7 @@ const Cart = () => {
                                     </div>
                                     <div className="container col-8 col-lg-3 d-flex flex-column">
                                         <h5 className="m-1">{item.name}</h5>
-                                        <p className="ps-3 m-1 text-secondary">Price: 
+                                        <p className="ps-3 m-1 text-secondary">Price:
                                             <NumericFormat displayType="text" value={item.price} thousandsGroupStyle="thousand" thousandSeparator="," /> VND
                                         </p>
                                         <p className="ps-3 m-1 text-secondary">Quantity: {item.quantity}</p>
@@ -86,13 +86,7 @@ const Cart = () => {
             }
 
             {data && <div className="text-end pt-4">
-                <VoucherCheck />
-
-                <h2 className="fw-bold">Total: 
-                    <NumericFormat displayType="text" value={data.total} thousandsGroupStyle="thousand" thousandSeparator="," /> VND
-                </h2>
-
-                <Link className="btn btn-primary" to='/confirm'>Checkout</Link>
+                <VoucherCheck total={data.total} cartDetail={data.detailedList} />
             </div>}
 
             {isPending && <div>Loading...</div>}
