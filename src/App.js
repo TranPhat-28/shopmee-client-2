@@ -10,6 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/*" element={<UserApp />} />
+          <Route path="/admin/*" element={<AdminApp />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>
