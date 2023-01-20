@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './components/Admin/admin.css';
 import App from './App';
 import AuthContextProvider from './contexts/AuthContext';
 import AdminAuthContextProvider from './contexts/AdminAuthContext';

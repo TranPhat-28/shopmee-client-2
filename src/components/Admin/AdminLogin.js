@@ -28,7 +28,7 @@ const AdminLogin = () => {
                     setAdminUser(data);
                     // Set LocalStorage
                     localStorage.setItem('adminUser', JSON.stringify(data))
-                    navigate('/admin/products');
+                    navigate('/admin/allProducts');
                 }
                 else {
                     toast.error(data);
