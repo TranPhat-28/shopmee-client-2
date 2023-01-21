@@ -74,7 +74,7 @@ export const useAuthFetchAndPagination = () => {
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
 
-    
+
     const fetchWithAuthAndPagination = (url, method, token, body) => {
         const fetchOption = {
             method: method,
@@ -105,7 +105,47 @@ export const useAuthFetchAndPagination = () => {
             })
 
     };
-    
+
 
     return { fetchWithAuthAndPagination, data, isPending, error };
 };
+
+export const useAuthFetch = () => {
+    const [data, setData] = useState(null);
+    const [isPending, setIsPending] = useState(true);
+    const [error, setError] = useState(null);
+
+
+    const fetchOnClick = (url, method, token, body) => {
+        const fetchOption = {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `bearer ${token}`
+            }
+        };
+
+        if (body) {
+            fetchOption.body = JSON.stringify(body);
+        }
+
+        fetch(url, fetchOption)
+            .then(res => {
+                if (!res.ok) { throw res }
+                return res.json()
+            })
+            .then(data => {
+                setData(data);
+                setIsPending(false);
+            })
+            .catch(e => {
+                e.json().then(err => {
+                    setIsPending(false);
+                    setError(err.error);
+                })
+            })
+
+    }
+
+    return { data, isPending, error, fetchOnClick };
+}

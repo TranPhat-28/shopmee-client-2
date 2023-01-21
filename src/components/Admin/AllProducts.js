@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
 // Import the component from the file
-import { useAuthFetchAndPagination } from "../../hooks/useFetch";
+import { useAuthFetchAndPagination, useAuthFetch } from "../../hooks/useFetch";
+import ProductDetail from "./ProductDetail";
 
 const AllProducts = () => {
 
@@ -16,6 +17,13 @@ const AllProducts = () => {
     const nextPage = () => {
         fetchWithAuthAndPagination('/admin/allproducts', 'POST', adminUser.token, {pagenumber: page});
         setPage(page + 1);
+    }
+
+    const { fetchOnClick, data: detailData, isPending: detailPending, error: detailError } = useAuthFetch();
+    // View product detail
+    const viewDetail = (id) => {
+        fetchOnClick('/admin/allproducts/' + id, 'GET', adminUser.token)
+        //fetchOnClick(id);
     }
 
     // Load first page
@@ -35,7 +43,7 @@ const AllProducts = () => {
 
             {data && <ul className="list-group">
                 {data.map(item => (
-                    <li className="list-group-item">{item.productName}</li>
+                    <li className="list-group-item" key={item._id} onClick={() => viewDetail(item._id)} >{item.productName}</li>
                 ))}
             </ul>}
 
@@ -43,6 +51,8 @@ const AllProducts = () => {
                 <p>Page {page} - showing 5 results per page...</p>
                 <button className="btn btn-primary" onClick={nextPage}>Next</button>
             </div>}
+
+            <ProductDetail detailData={detailData} detailError={detailError} />
         </div>
     );
 }
