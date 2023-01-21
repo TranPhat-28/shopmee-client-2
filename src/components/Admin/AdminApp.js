@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
+import AddProduct from "./AddProducts";
 import AdminLogin from "./AdminLogin";
 import AllProducts from "./AllProducts";
 import NavbarAdmin from "./NavbarAdmin";
@@ -25,6 +26,7 @@ const AdminApp = () => {
                                 <Route path="/" element={adminUser ? <Navigate to='/admin/products' /> : <AdminLogin />} />
 
                                 <Route path="/allProducts" element={adminUser ? <AllProducts /> : <Navigate to='/admin' />} />
+                                <Route path="/addProduct" element={adminUser ? <AddProduct /> : <Navigate to='/admin' />} />
                             </Routes>
 
                         </div>

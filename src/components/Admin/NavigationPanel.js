@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const NavigationPanel = () => {
+
     return (
         <div className="col-sm-12 col-md-4 p-3">
             <div className="container border rounded p-3">
@@ -8,7 +9,10 @@ const NavigationPanel = () => {
 
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <Link className="nav-link" href="/admin/allProducts">All products</Link>
+                        <Link className="nav-link" to="/admin/allProducts">All products</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link className="nav-link" to="/admin/addProduct">Add new product</Link>
                     </li>
                 </ul>
             </div>
