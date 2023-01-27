@@ -35,39 +35,41 @@ const ProductDetail = (props) => {
     const updateProduct = (e) => {
         e.preventDefault();
 
-        fetch('/admin/products/' + _id, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `bearer ${adminUser.token}`
-            },
-            body: JSON.stringify({
-                _id,
-                productName,
-                description,
-                price,
-                stockQuantity,
-                sold,
-                productImage,
-                category
+        if (window.confirm('Update this product?')) {
+            fetch('/admin/products/' + _id, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `bearer ${adminUser.token}`
+                },
+                body: JSON.stringify({
+                    _id,
+                    productName,
+                    description,
+                    price,
+                    stockQuantity,
+                    sold,
+                    productImage,
+                    category
+                })
             })
-        })
-        .then(res => {
-            if (!res.ok) { throw res }
-            return res.json()
-        })
-        .then(data => {
-            //setData(data);
-            //setIsPending(false);
-            toast.success(data);
-        })
-        .catch(e => {
-            e.json().then(err => {
-                //setIsPending(false);
-                //setError(err.error);
-                toast.error(err)
-            })
-        })
+                .then(res => {
+                    if (!res.ok) { throw res }
+                    return res.json()
+                })
+                .then(data => {
+                    //setData(data);
+                    //setIsPending(false);
+                    toast.success(data);
+                })
+                .catch(e => {
+                    e.json().then(err => {
+                        //setIsPending(false);
+                        //setError(err.error);
+                        toast.error(err)
+                    })
+                })
+        }
     }
 
     return (

@@ -14,6 +14,13 @@ const NavigationPanel = () => {
                     <li className="list-group-item">
                         <Link className="nav-link" to="/admin/addProduct">Add new product</Link>
                     </li>
+
+                    <li className="list-group-item">
+                        <Link className="nav-link" to="/admin/allVouchers">All vouchers</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link className="nav-link" to="/admin/addVoucher">Add new voucher</Link>
+                    </li>
                 </ul>
             </div>
         </div>
