@@ -5,6 +5,7 @@ import AddProduct from "./AddProducts";
 import AddVoucher from "./AddVoucher";
 import AdminLogin from "./AdminLogin";
 import AllProducts from "./AllProducts";
+import AllUsers from "./AllUsers";
 import AllVouchers from "./AllVouchers";
 import NavbarAdmin from "./NavbarAdmin";
 import NavigationPanel from "./NavigationPanel";
@@ -31,7 +32,9 @@ const AdminApp = () => {
                                 <Route path="/addProduct" element={adminUser ? <AddProduct /> : <Navigate to='/admin' />} />
 
                                 <Route path="/allVouchers" element={adminUser ? <AllVouchers /> : <Navigate to='/admin' />} />
-                                <Route path="/addVoucher" element={adminUser ? <AddVoucher /> : <Navigate to='/admin' />} />        
+                                <Route path="/addVoucher" element={adminUser ? <AddVoucher /> : <Navigate to='/admin' />} />
+
+                                <Route path="/allUsers" element={adminUser ? <AllUsers /> : <Navigate to='/admin' />} />
                             </Routes>
 
                         </div>
