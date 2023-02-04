@@ -14,6 +14,7 @@ import VoucherList from "./VoucherPage/VoucherList";
 import UserInfo from "./ChangeInfo/ChangeUserInfo";
 import ChangePassword from "./ChangeInfo/ChangeUserPassword";
 import ConfirmOrder from "./Confirm/ConfirmOrder";
+import Report from "./Report/Report";
 
 
 const UserApp = () => {
@@ -41,6 +42,8 @@ const UserApp = () => {
 
                 <Route path="/changeInfo" element={ user ? <UserInfo /> : <Navigate to='/login' />} />
                 <Route path="/changePassword" element={ user ? <ChangePassword /> : <Navigate to='/login' />} />
+
+                <Route path="/report" element={ user ? <Report /> : <Navigate to='/login' />} />
 
                 <Route path='*' element={<div>Not found</div>} />
             </Routes>
