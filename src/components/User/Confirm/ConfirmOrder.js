@@ -43,7 +43,7 @@ const ConfirmOrder = () => {
                 <NumericFormat displayType="text" value={final} thousandsGroupStyle="thousand" thousandSeparator="," /> VND
             </h5>
 
-            <ConfirmButton />
+            <ConfirmButton cartDetail={cartDetail} total={total} discount={discount} discountAmount={discountAmount} voucher={location.state.voucher} final={final} />
         </div>
     );
 }

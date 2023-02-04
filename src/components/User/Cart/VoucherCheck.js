@@ -45,7 +45,8 @@ const VoucherCheck = (props) => {
             state: {
                 cartDetail: cartDetail,
                 total: total,
-                discount: valid
+                discount: valid,
+                voucher: voucher
             }
         });
     }
