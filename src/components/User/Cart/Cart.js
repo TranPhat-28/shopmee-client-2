@@ -63,7 +63,7 @@ const Cart = () => {
                 <div className="container p-0" id="cartContainer">
                     <ul className="list-group w-100">
                         {data.detailedList.map(item => (
-                            <li className="list-group-item cart-item" key={item.idInCart} onClick={() => {removeItem(item.idInCart)}}>
+                            <li className="list-group-item cart-item" key={item.idInCart} onClick={() => { removeItem(item.idInCart) }}>
                                 <div className="row">
                                     <div className="container col-4 col-lg-6 d-flex align-items-center">
                                         <img id="cart-product-image" className="img-fluid" alt="Product" src={item.image} />
@@ -85,7 +85,7 @@ const Cart = () => {
                 </div>
             }
 
-            {data && <div className="text-end pt-4">
+            {(data && (data.detailedList.length !== 0)) && <div className="text-end pt-4">
                 <VoucherCheck total={data.total} cartDetail={data.detailedList} />
             </div>}
 

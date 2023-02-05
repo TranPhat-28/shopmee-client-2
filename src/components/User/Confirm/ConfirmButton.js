@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthContext";
 
@@ -7,6 +8,8 @@ const ConfirmButton = (props) => {
     const { cartDetail, total, discount, discountAmount, voucher, final } = props;
 
     const { user } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleCreateOrder = () => {
         /*
@@ -39,6 +42,7 @@ const ConfirmButton = (props) => {
                 return res.json()
             })
             .then(data => {
+                navigate('/')
                 toast.success(data)
             })
             .catch(e => {
