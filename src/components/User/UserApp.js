@@ -15,6 +15,7 @@ import UserInfo from "./ChangeInfo/ChangeUserInfo";
 import ChangePassword from "./ChangeInfo/ChangeUserPassword";
 import ConfirmOrder from "./Confirm/ConfirmOrder";
 import Report from "./Report/Report";
+import OrderList from "./OrderList/OrderList";
 
 
 const UserApp = () => {
@@ -44,6 +45,8 @@ const UserApp = () => {
                 <Route path="/changePassword" element={ user ? <ChangePassword /> : <Navigate to='/login' />} />
 
                 <Route path="/report" element={ user ? <Report /> : <Navigate to='/login' />} />
+
+                <Route path="/myOrders" element={ user ? <OrderList /> : <Navigate to='/login' />} />
 
                 <Route path='*' element={<div>Not found</div>} />
             </Routes>

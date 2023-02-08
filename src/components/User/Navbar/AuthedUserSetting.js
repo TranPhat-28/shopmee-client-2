@@ -29,7 +29,7 @@ const AuthedUserSetting = () => {
 
                 <li><hr className="dropdown-divider"></hr></li>
 
-                <li><Link className="dropdown-item" to="/myOrders">My orders (NOT YET)</Link></li>
+                <li><Link className="dropdown-item" to="/myOrders">My orders</Link></li>
 
                 <li><hr className="dropdown-divider"></hr></li>
 
