@@ -8,8 +8,10 @@ import AllProducts from "./AllProducts";
 import AllReport from "./AllReports";
 import AllUsers from "./AllUsers";
 import AllVouchers from "./AllVouchers";
+import ConfirmedOrders from "./ConfirmedOrders";
 import NavbarAdmin from "./NavbarAdmin";
 import NavigationPanel from "./NavigationPanel";
+import PendingOrders from "./PendingOrders";
 
 const AdminApp = () => {
 
@@ -38,6 +40,9 @@ const AdminApp = () => {
                                 <Route path="/allUsers" element={adminUser ? <AllUsers /> : <Navigate to='/admin' />} />
 
                                 <Route path="/report" element={adminUser ? <AllReport /> : <Navigate to='/admin' />} />
+
+                                <Route path="/pendingOrders" element={adminUser ? <PendingOrders /> : <Navigate to='/admin' />} />
+                                <Route path="/confirmedOrders" element={adminUser ? <ConfirmedOrders /> : <Navigate to='/admin' />} />
                             </Routes>
 
                         </div>

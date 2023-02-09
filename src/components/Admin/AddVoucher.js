@@ -58,7 +58,7 @@ const AddVoucher = () => {
     }
 
     return (<div>
-        <h4>Add a new voucher</h4>
+        <h3>Add a new voucher</h3>
         <form onSubmit={addVoucher}>
             <label className="form-label mb-0">Voucher code</label>
             <input type="text" name="voucherCode" className="form-control mb-2" value={code} onChange={(e) => setCode(e.target.value)} />

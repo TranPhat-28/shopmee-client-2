@@ -54,7 +54,7 @@ const AddProduct = () => {
 
     return (
         <div>
-            <h4>Add a new product</h4>
+            <h3>Add a new product</h3>
             <form onSubmit={addProduct}>
                 <label className="form-label mb-0">Product name</label>
                 <input className="form-control mb-2" type="text" name="name"
