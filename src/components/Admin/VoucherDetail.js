@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
+import { useOneTimeFetchHelper } from "../../hooks/useCustomFetch";
 
 const VoucherDetail = (props) => {
 
-    const navigate = useNavigate();
     const { adminUser } = useContext(AdminAuthContext);
     const detailData = props.detailData;
     const detailError = props.detailError;
@@ -30,41 +28,25 @@ const VoucherDetail = (props) => {
     }, [detailData])
 
 
+    // Hepler fetch function
+    const { oneTimeFetch } = useOneTimeFetchHelper('/admin/voucher', 'DELETE', adminUser.token, {
+        _id,
+        voucherCode
+    }, '0');
+
     const deleteVoucher = (e) => {
         e.preventDefault();
 
         if (window.confirm('Do you really want to delete this voucher?')) {
-            fetch('/admin/voucher', {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `bearer ${adminUser.token}`
-                },
-                body: JSON.stringify({
-                    _id,
-                    voucherCode
-                })
-            })
-                .then(res => {
-                    if (!res.ok) { throw res }
-                    return res.json()
-                })
-                .then(data => {
-                    toast.success(data);
-                    navigate(0);
-                })
-                .catch(e => {
-                    e.json().then(err => {
-                        toast.error(err)
-                    })
-                })
+            oneTimeFetch();
         }
     }
+
 
     return (
         <div className="mt-4">
             <h4>Voucher detail</h4>
-            {!detailData && <p>Click on a product to view detail</p>}
+            {!detailData && <p>Click on a voucher to view detail</p>}
 
             {detailError && <p>{detailError}</p>}
 
@@ -93,7 +75,7 @@ const VoucherDetail = (props) => {
                 <textarea rows="3" className="form-control mb-2" type="text"
                     value={desc} disabled></textarea>
 
-                <button className="btn btn-outline-primary">Delete this voucher</button>
+                <button className="btn btn-outline-danger">Delete this voucher</button>
             </form>}
         </div>
     );

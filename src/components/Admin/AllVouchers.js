@@ -1,37 +1,21 @@
 import { useContext, useEffect, useState } from "react";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
 // Import the component from the file
-import { useAuthFetchAndPagination, useAuthFetch } from "../../hooks/useFetch";
+import { useCustomFetchWithPage, useAuthFetch } from "../../hooks/useCustomFetch";
 import VoucherDetail from "./VoucherDetail";
 
 
 const AllVouchers = () => {
 
-    const [ page, setPage ] = useState(0);
-
+    // View voucher list and paging
     const { adminUser } = useContext(AdminAuthContext);
+    const { page, data, error, isPending, prevPage, nextPage } = useCustomFetchWithPage('/admin/allVouchers', adminUser.token);
 
-    // Get the custom hook from the component
-    const { fetchWithAuthAndPagination, data, isPending, error } = useAuthFetchAndPagination();
-
-    // OnClick NextPage
-    const nextPage = () => {
-        fetchWithAuthAndPagination('/admin/allVouchers', 'POST', adminUser.token, {pagenumber: page});
-        setPage(page + 1);
-    }
-
-    const { fetchOnClick, data: detailData, error: detailError } = useAuthFetch();
-    // View voucher detail
+    // View product detail
+    const { fetchOnClick, data: detailData, isPending: detailPending, error: detailError } = useAuthFetch();
     const voucherDetail = (id) => {
         fetchOnClick('/admin/voucher/' + id, 'GET', adminUser.token)
-        fetchOnClick(id);
     }
-
-    // Load first page
-    useEffect(() => {
-        fetchWithAuthAndPagination('/admin/allVouchers', 'POST', adminUser.token, {pagenumber: page});
-        setPage(page + 1);
-    }, []);
 
     return(
         <div>
@@ -49,7 +33,8 @@ const AllVouchers = () => {
 
             {data && <div>
                 <p>Page {page} - showing 5 results per page...</p>
-                <button className="btn btn-primary" onClick={nextPage}>Next</button>
+                <button className="btn btn-outline-primary me-2" onClick={prevPage}>Prev</button>
+                <button className="btn btn-outline-primary" onClick={nextPage}>Next</button>
             </div>}
 
             <VoucherDetail detailData={detailData} detailError={detailError} />

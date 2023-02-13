@@ -1,13 +1,10 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
 import { useOneTimeFetchHelper } from "../../hooks/useCustomFetch";
 
 const AddProduct = () => {
 
     const { adminUser } = useContext(AdminAuthContext);
-    const navigate = useNavigate();
 
     const [productName, setProductName] = useState('');
     const [description, setDescription] = useState('');

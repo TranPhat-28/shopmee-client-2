@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useOneTimeFetchHelper } from "../../hooks/useCustomFetch";
 
 const AddVoucher = () => {
 
@@ -19,42 +19,19 @@ const AddVoucher = () => {
         setNoExp(!noexp);
     }
 
+    const { oneTimeFetch } = useOneTimeFetchHelper('/admin/voucher', 'POST', adminUser.token, {
+        voucherCode: code,
+        expirationDate: exp,
+        noexp: noexp,
+        discountPercent: percent,
+        summary: sum,
+        description: desc
+    }, '/admin/allVouchers')
 
     const addVoucher = (e) => {
         e.preventDefault();
 
-        fetch('/admin/voucher', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `bearer ${adminUser.token}`
-            },
-            body: JSON.stringify({
-                voucherCode: code,
-                expirationDate: exp,
-                noexp: noexp,
-                discountPercent: percent,
-                summary: sum,
-                description: desc
-            })
-        })
-            .then(res => {
-                if (!res.ok) { throw res }
-                return res.json()
-            })
-            .then(data => {
-                //setData(data);
-                //setIsPending(false);
-                toast.success(data);
-                navigate('/admin/allVouchers');
-            })
-            .catch(e => {
-                e.json().then(err => {
-                    //setIsPending(false);
-                    //setError(err.error);
-                    toast.error(err)
-                })
-            })
+        oneTimeFetch();
     }
 
     return (<div>
