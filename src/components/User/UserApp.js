@@ -16,6 +16,8 @@ import ChangePassword from "./ChangeInfo/ChangeUserPassword";
 import ConfirmOrder from "./Confirm/ConfirmOrder";
 import Report from "./Report/Report";
 import OrderList from "./OrderList/OrderList";
+import NotFound from "./NotFound";
+import OrderDetail from "./OrderList/OrderDetail";
 
 
 const UserApp = () => {
@@ -47,8 +49,9 @@ const UserApp = () => {
                 <Route path="/report" element={ user ? <Report /> : <Navigate to='/login' />} />
 
                 <Route path="/myOrders" element={ user ? <OrderList /> : <Navigate to='/login' />} />
+                <Route path="/myOrders/:id" element={ user ? <OrderDetail/> : <Navigate to='/login' />} />
 
-                <Route path='*' element={<div>Not found</div>} />
+                <Route path='*' element={<NotFound />} />
             </Routes>
 
             <Routes>
@@ -74,4 +77,8 @@ DESCRIPTION FOR ALL THE PATHS:
 
     - /changeInfo           : Change user's contact information
     - /changePassword       : Change user's password
+
+    - /report               : Leave a report for admin
+    - /myOrders             : List all orders
+    - /myOrders/:id         : View detail information for an order
 */

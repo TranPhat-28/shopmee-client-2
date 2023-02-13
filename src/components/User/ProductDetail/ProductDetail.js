@@ -2,6 +2,7 @@ import { NumericFormat } from "react-number-format";
 import { useParams } from "react-router-dom";
 import { useCustomFetch } from "../../../hooks/useFetch";
 import AddtoCart from "./AddtoCart";
+import ViewFeedback from "./ViewFeedback";
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -33,6 +34,8 @@ const ProductDetail = () => {
             )}
 
             {isPending && <p>Loading...</p>}
+
+            <ViewFeedback />
         </div>
     );
 }
