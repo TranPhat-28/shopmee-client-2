@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
-import { oneTimeFetchHelper } from "../../hooks/useCustomFetch";
+import { useOneTimeFetchHelper } from "../../hooks/useCustomFetch";
 
 const ProductDetail = (props) => {
 
@@ -34,7 +33,7 @@ const ProductDetail = (props) => {
 
 
     // Hepler fetch function
-    const { oneTimeFetch } = oneTimeFetchHelper('/admin/products/' + _id, 'POST', adminUser.token, {
+    const { oneTimeFetch } = useOneTimeFetchHelper('/admin/products/' + _id, 'POST', adminUser.token, {
         _id,
         productName,
         description,
@@ -50,41 +49,6 @@ const ProductDetail = (props) => {
 
         if (window.confirm('Update this product?')) {
             oneTimeFetch();
-            /*
-            fetch('/admin/products/' + _id, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `bearer ${adminUser.token}`
-                },
-                body: JSON.stringify({
-                    _id,
-                    productName,
-                    description,
-                    price,
-                    stockQuantity,
-                    sold,
-                    productImage,
-                    category
-                })
-            })
-                .then(res => {
-                    if (!res.ok) { throw res }
-                    return res.json()
-                })
-                .then(data => {
-                    //setData(data);
-                    //setIsPending(false);
-                    toast.success(data);
-                })
-                .catch(e => {
-                    e.json().then(err => {
-                        //setIsPending(false);
-                        //setError(err.error);
-                        toast.error(err)
-                    })
-                })
-                */
         }
     }
 

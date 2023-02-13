@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
 // Import the component from the file
 import { useCustomFetchWithPage } from "../../hooks/useCustomFetch";
-import { useAuthFetchAndPagination, useAuthFetch } from "../../hooks/useFetch";
+import { useAuthFetch } from "../../hooks/useFetch";
 import ProductDetail from "./ProductDetail";
 
 const AllProducts = () => {

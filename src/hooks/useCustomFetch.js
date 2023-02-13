@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 
@@ -65,7 +66,9 @@ export const useCustomFetchWithPage = (url, token) => {
 
 //// HELPER FUNCTION FETCH ONCLICK
 //// ONETIME USE, WITH TOAST
-export const oneTimeFetchHelper = (url, method, token, body) => {
+export const useOneTimeFetchHelper = (url, method, token, body, navigateUrl) => {
+
+    const navigate = useNavigate();
 
     const oneTimeFetch = () => {
         fetch(url, {
@@ -81,14 +84,13 @@ export const oneTimeFetchHelper = (url, method, token, body) => {
                 return res.json()
             })
             .then(data => {
-                //setData(data);
-                //setIsPending(false);
                 toast.success(data);
+                if (navigateUrl){
+                    navigate(navigateUrl);
+                }
             })
             .catch(e => {
                 e.json().then(err => {
-                    //setIsPending(false);
-                    //setError(err.error);
                     toast.error(err)
                 })
             })

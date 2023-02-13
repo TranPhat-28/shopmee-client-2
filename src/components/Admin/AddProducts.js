@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
+import { useOneTimeFetchHelper } from "../../hooks/useCustomFetch";
 
 const AddProduct = () => {
 
@@ -15,41 +16,19 @@ const AddProduct = () => {
     const [productImage, setImage] = useState('');
     const [category, setCategory] = useState('electronics');
 
+    const { oneTimeFetch } = useOneTimeFetchHelper('/admin/addProduct', 'POST', adminUser.token, {
+        productName,
+        description,
+        price,
+        stockQuantity,
+        productImage,
+        category
+    }, '/admin/allProducts')
+
     const addProduct = (e) => {
         e.preventDefault();
 
-        fetch('/admin/addProduct', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `bearer ${adminUser.token}`
-            },
-            body: JSON.stringify({
-                productName,
-                description,
-                price,
-                stockQuantity,
-                productImage,
-                category
-            })
-        })
-            .then(res => {
-                if (!res.ok) { throw res }
-                return res.json()
-            })
-            .then(data => {
-                //setData(data);
-                //setIsPending(false);
-                toast.success(data);
-                navigate('/admin/allProducts');
-            })
-            .catch(e => {
-                e.json().then(err => {
-                    //setIsPending(false);
-                    //setError(err.error);
-                    toast.error(err)
-                })
-            })
+        oneTimeFetch();
     }
 
     return (
