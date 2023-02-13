@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
+import { oneTimeFetchHelper } from "../../hooks/useCustomFetch";
 
 const ProductDetail = (props) => {
 
@@ -32,10 +33,24 @@ const ProductDetail = (props) => {
     }, [detailData])
 
 
+    // Hepler fetch function
+    const { oneTimeFetch } = oneTimeFetchHelper('/admin/products/' + _id, 'POST', adminUser.token, {
+        _id,
+        productName,
+        description,
+        price,
+        stockQuantity,
+        sold,
+        productImage,
+        category
+    });
+
     const updateProduct = (e) => {
         e.preventDefault();
 
         if (window.confirm('Update this product?')) {
+            oneTimeFetch();
+            /*
             fetch('/admin/products/' + _id, {
                 method: 'POST',
                 headers: {
@@ -69,6 +84,7 @@ const ProductDetail = (props) => {
                         toast.error(err)
                     })
                 })
+                */
         }
     }
 

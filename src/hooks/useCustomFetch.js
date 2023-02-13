@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react"
+import { toast } from "react-toastify";
 
+
+//// CUSTOM FETCH WITH AUTH AND PAGING
+//// USED WHEN FETCHING A LIST OF PRODUCTS BY PAGE
 export const useCustomFetchWithPage = (url, token) => {
     // State
     const [page, setPage] = useState(0);
     const [data, setData] = useState([]);
+    const [isPending, setPending] = useState(null);
+    const [error, setError] = useState(null);
 
     // Function
     const prevPage = () => {
@@ -19,6 +25,8 @@ export const useCustomFetchWithPage = (url, token) => {
 
     // Load first page
     useEffect(() => {
+        // Set pending
+        setPending(true);
         //console.log(`Fetch to ${url} with page number ${page}`);
         fetch(url, {
             method: 'POST',
@@ -35,18 +43,56 @@ export const useCustomFetchWithPage = (url, token) => {
                 return res.json()
             })
             .then(data => {
+                // Set data
                 setData(data);
-                //console.log(data);
-                data.forEach(element => {
-                    console.log(element.feedback)
-                });
+                // Set pending
+                setPending(false);
             })
             .catch(e => {
                 e.json().then(err => {
-                    console.log(err)
+                    //console.log(err)
+                    setError(err);
+                    setPending(false);
                 })
             })
     }, [page])
 
-    return { page, data, prevPage, nextPage };
+    // Remember to page + 1 when displaying to the users
+    return { page, data, error, isPending, prevPage, nextPage };
+}
+
+
+
+//// HELPER FUNCTION FETCH ONCLICK
+//// ONETIME USE, WITH TOAST
+export const oneTimeFetchHelper = (url, method, token, body) => {
+
+    const oneTimeFetch = () => {
+        fetch(url, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `bearer ${token}`
+            },
+            body: JSON.stringify(body)
+        })
+            .then(res => {
+                if (!res.ok) { throw res }
+                return res.json()
+            })
+            .then(data => {
+                //setData(data);
+                //setIsPending(false);
+                toast.success(data);
+            })
+            .catch(e => {
+                e.json().then(err => {
+                    //setIsPending(false);
+                    //setError(err.error);
+                    toast.error(err)
+                })
+            })
+    }
+
+    return { oneTimeFetch };
 }
