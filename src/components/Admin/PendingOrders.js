@@ -1,37 +1,20 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
 // Import the component from the file
-import { useAuthFetchAndPagination, useAuthFetch } from "../../hooks/useFetch";
 import OrderDetail from "./OrderDetail";
-
+import { useCustomFetchWithPage, useAuthFetch } from "../../hooks/useCustomFetch";
 
 const PendingOrders = () => {
 
-    const [ page, setPage ] = useState(0);
-
+    // View voucher list and paging
     const { adminUser } = useContext(AdminAuthContext);
+    const { page, data, error, isPending, prevPage, nextPage } = useCustomFetchWithPage('/admin/pendingOrders', adminUser.token);
 
-    // Get the custom hook from the component
-    const { fetchWithAuthAndPagination, data, isPending, error } = useAuthFetchAndPagination();
-
-    // OnClick NextPage
-    const nextPage = () => {
-        fetchWithAuthAndPagination('/admin/pendingOrders', 'POST', adminUser.token, {pagenumber: page});
-        setPage(page + 1);
-    }
-
-    const { fetchOnClick, data: detailData, error: detailError } = useAuthFetch();
-    // View voucher detail
+    // View detail
+    const { fetchOnClick, data: detailData, isPending: detailPending, error: detailError } = useAuthFetch();
     const orderDetail = (id) => {
         fetchOnClick('/admin/orders/' + id, 'GET', adminUser.token)
-        fetchOnClick(id);
     }
-
-    // Load first page
-    useEffect(() => {
-        fetchWithAuthAndPagination('/admin/pendingOrders', 'POST', adminUser.token, {pagenumber: page});
-        setPage(page + 1);
-    }, []);
 
     return(
         <div>
@@ -43,13 +26,14 @@ const PendingOrders = () => {
 
             {data && <ul className="list-group">
                 {data.map(item => (
-                    <li className="list-group-item" key={item._id} onClick={() => orderDetail(item._id)}>Order {item._id}</li>
+                    <li className="list-group-item" key={item._id} onClick={() => orderDetail(item._id)}>{(item._id !== 'No more result to display') ? 'Order ': '' }{item._id}</li>
                 ))}
             </ul>}
 
             {data && <div>
                 <p>Page {page} - showing 5 results per page...</p>
-                <button className="btn btn-primary" onClick={nextPage}>Next</button>
+                <button className="btn btn-outline-primary me-2" onClick={prevPage}>Prev</button>
+                <button className="btn btn-outline-primary" onClick={nextPage}>Next</button>
             </div>}
 
             <OrderDetail detailData={detailData} detailError={detailError} />

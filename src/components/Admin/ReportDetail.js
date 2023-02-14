@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
+import { useOneTimeFetchHelper } from "../../hooks/useCustomFetch";
 
 const ReportDetail = (props) => {
 
-    const navigate = useNavigate();
     const { adminUser } = useContext(AdminAuthContext);
     const detailData = props.detailData;
     const detailError = props.detailError;
@@ -26,44 +25,27 @@ const ReportDetail = (props) => {
     }, [detailData])
 
 
-    const deleteVoucher = (e) => {
+    // Hepler fetch function
+    const { oneTimeFetch } = useOneTimeFetchHelper('/admin/report', 'DELETE', adminUser.token, {
+        _id
+    });
+
+    const deleteReport = (e) => {
         e.preventDefault();
-        
+
         if (window.confirm('Do you really want to delete this report?')) {
-            fetch('/admin/report', {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `bearer ${adminUser.token}`
-                },
-                body: JSON.stringify({
-                    _id
-                })
-            })
-                .then(res => {
-                    if (!res.ok) { throw res }
-                    return res.json()
-                })
-                .then(data => {
-                    toast.success(data);
-                    //navigate(0);
-                })
-                .catch(e => {
-                    e.json().then(err => {
-                        toast.error(err)
-                    })
-                })
+            oneTimeFetch();
         }
     }
 
     return (
         <div className="mt-4">
             <h4>Report detail</h4>
-            {!detailData && <p>Click on a product to view detail</p>}
+            {!detailData && <p>Click on a report to view detail</p>}
 
             {detailError && <p>{detailError}</p>}
 
-            {detailData && <form onSubmit={deleteVoucher}>
+            {detailData && <form onSubmit={deleteReport}>
                 <label className="form-label mb-0">Report ID</label>
                 <input className="form-control mb-2" type="text"
                     value={_id} disabled></input>
@@ -80,7 +62,7 @@ const ReportDetail = (props) => {
                 <textarea rows="3" className="form-control mb-2" type="text"
                     value={detail} disabled></textarea>
 
-                <button className="btn btn-outline-primary">Delete this report</button>
+                <button className="btn btn-outline-danger">Delete this report</button>
             </form>}
         </div>
     );

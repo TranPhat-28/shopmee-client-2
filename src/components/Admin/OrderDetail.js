@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
+import { useOneTimeFetchHelper } from "../../hooks/useCustomFetch";
 
 const OrderDetail = (props) => {
 
-    const navigate = useNavigate();
     const { adminUser } = useContext(AdminAuthContext);
     const detailData = props.detailData;
     const detailError = props.detailError;
@@ -33,38 +31,21 @@ const OrderDetail = (props) => {
         }
     }, [detailData])
 
+    // Hepler fetch function
+    const { oneTimeFetch } = useOneTimeFetchHelper('/admin/pendingOrders/' + _id, 'POST', adminUser.token, {}, '/admin/confirmedOrders');
 
     const confirmOrder = (e) => {
         e.preventDefault();
-        
+
         if (window.confirm('Confirm this order?')) {
-            fetch('/admin/pendingOrders/' + _id, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `bearer ${adminUser.token}`
-                }
-            })
-                .then(res => {
-                    if (!res.ok) { throw res }
-                    return res.json()
-                })
-                .then(data => {
-                    toast.success(data);
-                    navigate('/admin/confirmedOrders');
-                })
-                .catch(e => {
-                    e.json().then(err => {
-                        toast.error(err)
-                    })
-                })
+            oneTimeFetch();
         }
     }
 
     return (
         <div className="mt-4">
-            <h4>Voucher detail</h4>
-            {!detailData && <p>Click on a product to view detail</p>}
+            <h4>Order detail</h4>
+            {!detailData && <p>Click on an order to view detail</p>}
 
             {detailError && <p>{detailError}</p>}
 

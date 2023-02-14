@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { AdminAuthContext } from "../../contexts/AdminAuthContext";
+import { useOneTimeFetchHelper } from "../../hooks/useCustomFetch";
 
 const UserDetail = (props) => {
 
-    const navigate = useNavigate();
     const { adminUser } = useContext(AdminAuthContext);
     const detailData = props.detailData;
     const detailError = props.detailError;
@@ -16,6 +14,7 @@ const UserDetail = (props) => {
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [dateJoined, setDateJoined] = useState('');
+    const [userStatus, setUserStatus] = useState('');
 
     useEffect(() => {
         if (detailData) {
@@ -25,42 +24,36 @@ const UserDetail = (props) => {
             setPhone(detailData.phonenumber);
             setAddress(detailData.address);
             setDateJoined(detailData.dateJoined);
+            setUserStatus(detailData.status);
         }
     }, [detailData])
 
 
-    const deleteVoucher = (e) => {
+    // Hepler fetch function
+    const { oneTimeFetch: banFetch } = useOneTimeFetchHelper('/admin/restrict', 'POST', adminUser.token, {
+        _id: _id
+    }, '/admin/allUsers');
+
+    const { oneTimeFetch: removeBanFetch } = useOneTimeFetchHelper('/admin/removeRestrict', 'POST', adminUser.token, {
+        _id: _id
+    }, '/admin/allUsers');
+
+    const banUser = (e) => {
         e.preventDefault();
 
-        /*
-        if (window.confirm('Do you really want to delete this voucher?')) {
-            fetch('/admin/voucher', {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `bearer ${adminUser.token}`
-                },
-                body: JSON.stringify({
-                    _id,
-                    voucherCode
-                })
-            })
-                .then(res => {
-                    if (!res.ok) { throw res }
-                    return res.json()
-                })
-                .then(data => {
-                    toast.success(data);
-                    navigate(0);
-                })
-                .catch(e => {
-                    e.json().then(err => {
-                        toast.error(err)
-                    })
-                })
+        if (window.confirm('Restrict this user?')) {
+            banFetch();
         }
-        */
     }
+
+    const removeBanUser = (e) => {
+        e.preventDefault();
+
+        if (window.confirm('Remove restriction for this user?')) {
+            removeBanFetch();
+        }
+    }
+
 
     return (
         <div className="mt-4">
@@ -69,7 +62,7 @@ const UserDetail = (props) => {
 
             {detailError && <p>{detailError}</p>}
 
-            {detailData && <form onSubmit={deleteVoucher}>
+            {detailData && <form onSubmit={(userStatus === 'active') ? banUser : removeBanUser}>
                 <label className="form-label mb-0">User ID</label>
                 <input className="form-control mb-2" type="text"
                     value={_id} disabled></input>
@@ -94,7 +87,12 @@ const UserDetail = (props) => {
                 <input className="form-control mb-2" type="text"
                     value={dateJoined} disabled></input>
 
-                <button className="btn btn-outline-primary">Delete this user</button>
+                <label className="form-label mb-0">Status</label>
+                <input className="form-control mb-2" type="text"
+                    style={(userStatus === 'active') ? {color: 'green'} : {color: 'red'}}
+                    value={userStatus} disabled></input>
+
+                <button className={(userStatus === 'active') ? "btn btn-outline-danger" : "btn btn-outline-success"}>{(userStatus === 'active') ? 'Restrict this user' : 'Remove restriction'}</button>
             </form>}
         </div>
     );
