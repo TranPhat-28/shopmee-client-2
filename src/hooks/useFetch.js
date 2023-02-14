@@ -6,7 +6,7 @@ export const useCustomFetch = (url) => {
     //const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(url)
+        fetch("https://shopmee-server-2.onrender.com" + url)
             .then(res => {
                 if (!res.ok) { // error coming back from server
                     throw Error('could not fetch the data for that resource');
@@ -48,7 +48,7 @@ export const useFetchWithAuth = (url, method, token, body) => {
 
 
     useEffect(() => {
-        fetch(url, fetchOption)
+        fetch("https://shopmee-server-2.onrender.com" + url, fetchOption)
             .then(res => {
                 if (!res.ok) { throw res }
                 return res.json()
@@ -88,7 +88,7 @@ export const useAuthFetchAndPagination = () => {
             fetchOption.body = JSON.stringify(body);
         }
 
-        fetch(url, fetchOption)
+        fetch("https://shopmee-server-2.onrender.com" + url, fetchOption)
             .then(res => {
                 if (!res.ok) { throw res }
                 return res.json()
@@ -129,7 +129,7 @@ export const useAuthFetch = () => {
             fetchOption.body = JSON.stringify(body);
         }
 
-        fetch(url, fetchOption)
+        fetch("https://shopmee-server-2.onrender.com" + url, fetchOption)
             .then(res => {
                 if (!res.ok) { throw res }
                 return res.json()

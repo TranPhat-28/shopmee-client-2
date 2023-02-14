@@ -29,7 +29,7 @@ export const useCustomFetchWithPage = (url, token) => {
         // Set pending
         setPending(true);
         //console.log(`Fetch to ${url} with page number ${page}`);
-        fetch(url, {
+        fetch("https://shopmee-server-2.onrender.com" + url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export const useOneTimeFetchHelper = (url, method, token, body, navigateUrl) => 
     const navigate = useNavigate();
 
     const oneTimeFetch = () => {
-        fetch(url, {
+        fetch("https://shopmee-server-2.onrender.com" + url, {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ export const useOneTimeFetchHelper = (url, method, token, body, navigateUrl) => 
                     navigate(0);
                 }
                 else if (navigateUrl){
-                    navigate(navigateUrl);
+                    navigate("https://shopmee-server-2.onrender.com" + navigateUrl);
                 }
             })
             .catch(e => {
@@ -125,7 +125,7 @@ export const useAuthFetch = () => {
             fetchOption.body = JSON.stringify(body);
         }
 
-        fetch(url, fetchOption)
+        fetch("https://shopmee-server-2.onrender.com" + url, fetchOption)
             .then(res => {
                 if (!res.ok) { throw res }
                 return res.json()
@@ -155,7 +155,7 @@ export const useHomeFetch = (url) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(url)
+        fetch("https://shopmee-server-2.onrender.com" + url)
             .then(res => {
                 if (!res.ok) { // error coming back from server
                     throw Error('could not fetch the data for that resource');

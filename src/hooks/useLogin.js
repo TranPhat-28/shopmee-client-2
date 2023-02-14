@@ -9,7 +9,7 @@ export const useLogin = () => {
     const navigate = useNavigate();
 
     const login = (email, password) => {
-        fetch('/login', {
+        fetch('https://shopmee-server-2.onrender.com/login', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -29,7 +29,7 @@ export const useLogin = () => {
                 setUser(data);
                 // Set LocalStorage
                 localStorage.setItem('user', JSON.stringify(data))
-                navigate('/');
+                navigate('https://shopmee-server-2.onrender.com/');
             }
             else{
                 toast.error(data);
