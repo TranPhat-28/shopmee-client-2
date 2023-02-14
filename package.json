@@ -38,5 +38,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.239.129:5000/"
+  "proxy": "https://shopmee-server-2.onrender.com/"
 }
