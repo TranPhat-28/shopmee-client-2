@@ -29,7 +29,7 @@ export const useLogin = () => {
                 setUser(data);
                 // Set LocalStorage
                 localStorage.setItem('user', JSON.stringify(data))
-                navigate('https://shopmee-server-2.onrender.com/');
+                navigate('/');
             }
             else{
                 toast.error(data);

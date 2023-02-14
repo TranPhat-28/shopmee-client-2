@@ -89,7 +89,7 @@ export const useOneTimeFetchHelper = (url, method, token, body, navigateUrl) => 
                     navigate(0);
                 }
                 else if (navigateUrl){
-                    navigate("https://shopmee-server-2.onrender.com" + navigateUrl);
+                    navigate(navigateUrl);
                 }
             })
             .catch(e => {
