@@ -152,7 +152,7 @@ export const useAuthFetch = () => {
 export const useHomeFetch = (url) => {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(true);
-    //const [error, setError] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetch(url)
@@ -165,15 +165,15 @@ export const useHomeFetch = (url) => {
             .then(data => {
                 setIsPending(false);
                 setData(data);
-                //setError(null);
+                setError(null);
             })
             .catch(err => {
                 // auto catches network / connection error
                 setIsPending(false);
-                //setError(err.message);
+                setError(err.message);
             })
     }, [url])
 
 
-    return { data, isPending };
+    return { data, isPending, error };
 }
