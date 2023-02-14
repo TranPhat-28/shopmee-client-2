@@ -1,7 +1,8 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-const SearchFilter = () => {
+const SearchFilter = (props) => {
 
+    const { nextPage } = props;
     const [searchParams, setSearchParams] = useSearchParams();
     
     const applyFilter = () => {
@@ -24,6 +25,7 @@ const SearchFilter = () => {
 
         //console.log(params);
         setSearchParams(params);
+        nextPage();
     }
 
     return (

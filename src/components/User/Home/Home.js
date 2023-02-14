@@ -1,13 +1,13 @@
-import { useCustomFetch } from "../../../hooks/useFetch";
 import Carousel from "./Carousel";
 import Category from "./Category";
 import ProductListing from "../ProductListing";
 import VoucherBanner from "./VoucherBanner";
+import { useHomeFetch } from "../../../hooks/useCustomFetch";
 
 
 const Home = () => {
-    const { isPending: isPendingA, data: newArrivals } = useCustomFetch('/newArrivals');
-    const { isPending: isPendingB, data: bestSellers } = useCustomFetch('/bestSellers');
+    const { isPending: isPendingA, data: newArrivals } = useHomeFetch('/newArrivals');
+    const { isPending: isPendingB, data: bestSellers } = useHomeFetch('/bestSellers');
 
     return(
         <div className="container" style={{backgroundColor: "white"}}>

@@ -9,6 +9,7 @@ const ItemDetailedList = (props) => {
 
     return (
         <div className="container p-0" id="cartContainer">
+            <h4>List of ordered items</h4>
             <ul className="list-group w-100">
                 {detailedList.map(item => (
                     <li className="list-group-item cart-item" key={item.idInCart}>

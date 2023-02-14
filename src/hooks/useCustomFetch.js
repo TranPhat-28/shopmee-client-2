@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 
 //// CUSTOM FETCH WITH AUTH AND PAGING
-//// USED WHEN FETCHING A LIST OF PRODUCTS BY PAGE
+//// USED WHEN FETCHING A LIST AND PAGINATION
 export const useCustomFetchWithPage = (url, token) => {
     // State
     const [page, setPage] = useState(0);
@@ -144,4 +144,36 @@ export const useAuthFetch = () => {
     }
 
     return { data, isPending, error, fetchOnClick };
+}
+
+
+
+//// Fetch at home page for bestsellers and newarrivals
+export const useHomeFetch = (url) => {
+    const [data, setData] = useState(null);
+    const [isPending, setIsPending] = useState(true);
+    //const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetch(url)
+            .then(res => {
+                if (!res.ok) { // error coming back from server
+                    throw Error('could not fetch the data for that resource');
+                }
+                return res.json();
+            })
+            .then(data => {
+                setIsPending(false);
+                setData(data);
+                //setError(null);
+            })
+            .catch(err => {
+                // auto catches network / connection error
+                setIsPending(false);
+                //setError(err.message);
+            })
+    }, [url])
+
+
+    return { data, isPending };
 }
