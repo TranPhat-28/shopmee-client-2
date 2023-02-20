@@ -19,7 +19,7 @@ const AddtoCart = (props) => {
         }
         else{
             // Perform fetch
-            fetch('/addtoCart', {
+            fetch('https://shopmee-server-2.onrender.com/addtoCart', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

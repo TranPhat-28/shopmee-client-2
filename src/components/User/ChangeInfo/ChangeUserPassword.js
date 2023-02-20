@@ -34,7 +34,7 @@ const ChangePassword = () => {
             };
 
 
-            fetch('/userPassword', fetchOption)
+            fetch('https://shopmee-server-2.onrender.com/userPassword', fetchOption)
                 .then(res => {
                     if (!res.ok) { throw res }
                     return res.json()

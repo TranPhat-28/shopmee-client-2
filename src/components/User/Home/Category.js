@@ -28,35 +28,6 @@ const Category = () => {
             </div>
         </div>
     )
-
-    /*
-    return (
-        <div className="container" id="category-container">
-            <div className="row d-flex justify-content-center">
-                <div id="Electronics" className="col-2 d-flex justify-content-center align-items-center flex-column category-item m-1 p-2" onclick="filterCategory(this.id)">
-                    <i className="fas fa-tv responsive-icon"></i>
-                    <span className="responsive-text">Electronics</span>
-                </div>
-                <div id="Healthcares" className="col-2 d-flex justify-content-center align-items-center flex-column category-item m-1 p-2" onclick="filterCategory(this.id)">
-                    <i className="fas fa-heartbeat responsive-icon"></i>
-                    <span className="responsive-text">Healthcares</span>
-                </div>
-                <div id="Lifestyles" className="col-2 d-flex justify-content-center align-items-center flex-column category-item m-1 p-2" onclick="filterCategory(this.id)">
-                    <i className="fas fa-couch responsive-icon"></i>
-                    <span className="responsive-text">Lifestyles</span>
-                </div>
-                <div id="Clothings" className="col-2 d-flex justify-content-center align-items-center flex-column category-item m-1 p-2" onclick="filterCategory(this.id)">
-                    <i className="fas fa-tshirt responsive-icon"></i>
-                    <span className="responsive-text">Clothings</span>
-                </div>
-                <div id="Cosmetics" className="col-2 d-flex justify-content-center align-items-center flex-column category-item m-1 p-2" onclick="filterCategory(this.id)">
-                    <i className="fas fa-hand-sparkles responsive-icon"></i>
-                    <span className="responsive-text">Cosmetics</span>
-                </div>
-            </div>
-        </div>
-    );
-    */
 }
 
 export default Category;

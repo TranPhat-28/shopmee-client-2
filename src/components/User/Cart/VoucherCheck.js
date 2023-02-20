@@ -17,7 +17,7 @@ const VoucherCheck = (props) => {
     }
 
     useEffect(() => {
-        fetch('/validateVoucher', {
+        fetch('https://shopmee-server-2.onrender.com/validateVoucher', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

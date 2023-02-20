@@ -14,7 +14,7 @@ const Report = () => {
     const submitReport = (e) => {
         e.preventDefault();
 
-        fetch('/report', {
+        fetch('https://shopmee-server-2.onrender.com/report', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

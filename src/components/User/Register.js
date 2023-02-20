@@ -15,7 +15,7 @@ const Register = () => {
         const address = document.getElementsByName("address")[0].value;
 
         
-        fetch('/register', {
+        fetch('https://shopmee-server-2.onrender.com/register', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

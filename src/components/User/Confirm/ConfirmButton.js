@@ -22,7 +22,7 @@ const ConfirmButton = (props) => {
         console.log(final);
         */
 
-        fetch('/confirmOrder', {
+        fetch('https://shopmee-server-2.onrender.com/confirmOrder', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

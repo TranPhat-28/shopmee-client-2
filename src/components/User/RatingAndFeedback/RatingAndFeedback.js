@@ -17,7 +17,7 @@ const RatingAndFeedback = (props) => {
     const submitFeedback = (e) => {
         e.preventDefault();
 
-        fetch('/feedback/', {
+        fetch('https://shopmee-server-2.onrender.com/feedback/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

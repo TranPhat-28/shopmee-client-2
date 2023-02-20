@@ -31,7 +31,7 @@ const UserInfo = () => {
                     })
                 };
 
-                fetch('/user', fetchOption)
+                fetch('https://shopmee-server-2.onrender.com/user', fetchOption)
                     .then(res => {
                         if (!res.ok) { throw res }
                         return res.json()
