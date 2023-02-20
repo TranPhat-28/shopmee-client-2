@@ -9,12 +9,12 @@ const AdminLogin = () => {
     const navigate = useNavigate();
 
     const adminLogin = (email, password) => {
-        fetch('https://shopmee-server-2.onrender.com/admin/adminLogin', {
+        fetch("https://shopmee-server-2.onrender.com/admin/adminLogin", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 email: email,
-                password: password,
+                password: password
             })
         })
             .then(res => {
@@ -35,7 +35,7 @@ const AdminLogin = () => {
                 }
             })
             .catch(e => {
-                console.log(e);
+                console.log(e.message);
                 toast.error("Something went wrong");
             })
     }
